@@ -1,0 +1,21 @@
+name: OWASP ZAP Dynamic Analysis
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: The target to scan
+        required: true
+        default: ''
+
+jobs:
+  zap:
+    name: OWASP ZAP
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Zap Scan
+        uses: zaproxy/action-full-scan@v0.4.0
+        with:
+          target: "${{ github.event.inputs.target }}"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          rules_file_name: "./conf/generic.conf"
