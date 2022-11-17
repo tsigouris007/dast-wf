@@ -19,4 +19,3 @@ jobs:
           target: "${{ github.event.inputs.target }}"
           token: ${{ secrets.GITHUB_TOKEN }}
           rules_file_name: "./conf/generic.conf"
-          cmd_options: "-J ${{ env.ARTIFACT }} -a"
